@@ -9,6 +9,10 @@ class OrderData(BaseModel):
     items: list
     total: float
 
+@app.get("/")
+async def root():
+    return {"message": "FaaS ETA online"}
+
 @app.post("/eta")
 async def calculate_eta(order: OrderData):
     local_zone = ZoneInfo("America/Guayaquil")
